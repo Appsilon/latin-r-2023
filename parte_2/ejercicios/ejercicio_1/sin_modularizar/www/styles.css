@@ -11,6 +11,7 @@
 
 
 .custom-code {
+  border-radius: 5px;
   padding: 1rem;
   background: black;
   color: lightgray;

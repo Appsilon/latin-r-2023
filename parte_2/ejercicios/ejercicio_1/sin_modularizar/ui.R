@@ -1,3 +1,8 @@
+#' Helper function used to render code
+code_highlight_tag <- function(...) {
+  tags$pre(tags$code(class = "language-r", ...))
+}
+
 function() {
   fluidPage(
     title = "Ejemplo 1",
@@ -10,12 +15,14 @@ function() {
         type = "text/css",
         href = "styles.css"
       ),
+      # Prism usado para resaltar codigo
       tags$link(
         rel = "stylesheet",
-        href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css"
+        type = "text/css",
+        href = "prism.css"
       ),
       tags$script(
-        src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"
+        src = "prism.js"
       ),
       shinyjs::useShinyjs()
     ),
@@ -37,7 +44,7 @@ function() {
           ),
           div(
             class = "custom-code",
-            htmlOutput("codigo", container = tags$pre)
+            htmlOutput("codigo", container = code_highlight_tag)
           )
         ),
         column(

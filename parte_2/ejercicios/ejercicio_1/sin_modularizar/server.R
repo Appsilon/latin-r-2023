@@ -1,3 +1,14 @@
+#' Normalizes data
+normalize_data <- function(data) {
+  data - mean(data) / sd(data)
+}
+
+#' Format the input as code
+format_as_code <- function(code) {
+  code <- c(" ", code)
+  paste(code, collapse = "\n")
+}
+
 function(input, output, session) {
 
   output$sepalo <- renderPlot({
@@ -30,13 +41,13 @@ function(input, output, session) {
   # Renderizando codigo
   output$codigo <- renderUI({
     archivo_leido <- readLines(input$archivo)
-    tags$code(format_as_code(archivo_leido), class = "language-r")
+    format_as_code(archivo_leido)
   })
 
   # Resaltando codigo
   observeEvent(input$archivo, {
     shinyjs::runjs(
-      'setTimeout( () => {hljs.highlightElement(document.getElementById("codigo"))}, 100)'
+      'setTimeout( () => {Prism.highlightElement(document.getElementById("codigo"))}, 100)'
     )
   })
 }
