@@ -1,0 +1,18 @@
+.custom-header {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  background-color: #0099f9;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem;
+  color: #fff;
+}
+
+
+.custom-code {
+  padding: 1rem;
+  background: black;
+  color: lightgray;
+  font-family: mono;
+}
