@@ -24,7 +24,12 @@ function(input, output, session) {
   # Leyendo archivos
   updateSelectInput(
     inputId = "archivo",
-    choices = list.files(recursive = TRUE, pattern = "*.R$")
+    choices = grep(
+      list.files(recursive = TRUE, pattern = "^.*\\.R$"),
+      pattern = "renv",
+      value = TRUE,
+      invert = TRUE
+    )
   )
 
   # Renderizando codigo
